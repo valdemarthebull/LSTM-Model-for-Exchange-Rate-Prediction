@@ -48,7 +48,7 @@ The file is dependent on the file `ARIMA.py` which contains functions for the AR
 
 
 ## NOTE!
-The "Safeguard" file and pictures are not the correct pictures used in the original thesis.
+The "Safeguard" file is only for backup and pictures are not the correct pictures used in the original thesis.
 
 
 
