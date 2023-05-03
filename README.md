@@ -29,7 +29,7 @@ pip install -r requirements.txt
 ```
 
 ## Data
-Data is taken from Sveriges Riksbank. The data is downloaded from the following link: https://www.riksbank.se/en-gb/statistics/search-interest--exchange-rates/interest-rates-and-currencies/official-exchange-rates/ and is stored in the `29_year_data.csv` file. The data is stored in the following format: Comma Seperated Values.
+Data is taken from Sveriges Riksbank. The data is downloaded from the following link: https://www.riksbank.se/en-gb/statistics/search-interest--exchange-rates/interest-rates-and-currencies/official-exchange-rates/ and is stored in the `20_year_data.csv` file. The data is stored in the following format: Comma Seperated Values.
 
 ## Main
 This section describes the main files for the project. The main files are structured as follows:
