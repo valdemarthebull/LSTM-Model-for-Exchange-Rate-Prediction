@@ -38,11 +38,19 @@ This section describes the main files for the project. The main files are struct
 
 ### LSTM
 THe main file for the LSTM model is `LSTM MODEL.ipynb`. 
-The file is dependent on the file `LSTM.py` which contains functions for the LSTM model.
+The file is dependent on the file `LSTMpy.py` which contains functions for the LSTM model.
 
 
 ### ARIMA
-The main file for the ARIMA model is `ARIMA MODEL.ipynb`.
+The main file for the ARIMA model is `ARIMA MODEL TRUE.ipynb`.
 The file is dependent on the file `ARIMA.py` which contains functions for the ARIMA model.
+
+
+
+## NOTE!
+The "Safeguard" file and pictures are not the correct pictures used in the original thesis.
+
+
+
 
 
