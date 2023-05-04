@@ -146,7 +146,7 @@ def DPA(testY_plot, test_predict):
     false_direction = 0
 
     ## Loop through the test set and compare the predicted direction with the actual direction
-    for i in range(1, len(test_predict)):
+    for i in range(1, (len(test_predict))):
         if test_predict[i] > test_predict[i-1] and testY_plot[i] > testY_plot[i-1]:
             counter += 1
             correct_direction += 1
@@ -157,22 +157,14 @@ def DPA(testY_plot, test_predict):
             counter -= 1
             false_direction += 1
         
-    ## Calculate the accuracy of the model
-    print("Counter", counter)
-    print("Total number of predictions:", len(test_predict))
-    print("Number of correct directions:", correct_direction)
-    print("Number of false directions:", false_direction)
-    print("Percentage of correct directions:", correct_direction / len(test_predict))
-    print("Percentage of false directions:", false_direction / len(test_predict))
-
     ## output the metrics in a latex table using tabulate and a title 
 
     table = [["Counter", counter],
-                ["Total number of predictions", len(test_predict)],
+                ["Total number of predictions", (len(test_predict)-1)],
                 ["Number of correct directions", correct_direction],
                 ["Number of false directions", false_direction],
-                ["Percentage of correct directions", correct_direction / len(test_predict)],
-                ["Percentage of false directions", false_direction / len(test_predict)]]
+                ["Percentage of correct directions", correct_direction / (len(test_predict)-1)],
+                ["Percentage of false directions", false_direction /(len(test_predict)-1)]]
 
 
     print(tabulate(table, tablefmt="latex", headers=[f"LSTM {column}"]))
