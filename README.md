@@ -3,6 +3,7 @@
 ## Comparative Analysis of the ARIMA and LSTM Models, for Exchange Rate Prediction
 ### A Case Study on the Swedish-Danish Currency Pair (Econometrics)
 
+![LSTM prediction](/Users/vg/Desktop/BSc.-Economics-Comparative-Analysis-of-the-ARIMA-and-LSTM-Models-for-Exchange-Rate-Prediction./Model – BA/LSTM SEKDKK/LSTM prediction for SEKDKK.png)
 
 **Members**
 | Name | Student ID |
