@@ -24,6 +24,9 @@ import LSTMpy as lstm
 import warnings
 import tqdm
 
+## White Noise Test for the data
+from statsmodels.stats.diagnostic import acorr_ljungbox
+
 ## set random seed
 np.random.seed(42)
 
@@ -79,8 +82,8 @@ def diff_outliers(data, column):
     diff_data = data.diff().dropna()
     
     # Remove outliers
-    diff_data = diff_data[diff_data[column] < 0.10]
-    diff_data = diff_data[diff_data[column] > -0.10]
+    diff_data = diff_data[diff_data < 0.05]
+    diff_data = diff_data[diff_data > -0.05]
     
     # table of the removed outliers
     table = [["Removed outliers", len(data) - len(diff_data)], ["Total number of observations", len(data)]]
@@ -123,7 +126,7 @@ def distribution(diff_data, column):
     plt.savefig(f"ARIMA {column}_distribution.png")
     
     plt.show()
-
+    return mean
 
 
 def plot_all(data_train, data_test, diff_data, column, mean):
@@ -133,7 +136,7 @@ def plot_all(data_train, data_test, diff_data, column, mean):
     '''
     
     plt.figure(figsize=(20, 10))
-    plt.plot(data_train[-200:], label = 'Train Data (Last 200 days)')
+    plt.plot(data_train[-1000:], label = 'Train Data (Last 200 days)')
     plt.plot(data_test, label = 'Test Data')
     plt.title('Train (Only 200 days) and Test data')
     plt.axvline(x=data_train.index[-1],color='black', linestyle='--', label = 'Train/Test data cut-off')
