@@ -1,6 +1,5 @@
 ## This script is used to generate the ARIMA model for the time series data
 # The script defines the functions used for the ARIMA jupyter file.
-
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -136,17 +135,17 @@ def plot_all(data_train, data_test, diff_data, column, mean):
     '''
     
     plt.figure(figsize=(20, 10))
-    plt.plot(data_train[-1000:], label = 'Train Data (Last 200 days)')
+    plt.plot(data_train[-1000:], label = 'Train Data (Last 1000 days)')
     plt.plot(data_test, label = 'Test Data')
     plt.title('Train (Only 200 days) and Test data')
     plt.axvline(x=data_train.index[-1],color='black', linestyle='--', label = 'Train/Test data cut-off')
     plt.xticks(rotation=45)
-    plt.title(f'Train and Test data for {column}')
+    plt.title(f'Train and Test data for {column}', size = 30)
     mean = diff_data.mean()
     mean = float(mean)
     print(mean)
     plt.axhline(mean, color='r', linestyle='--', label = 'Data Mean')
-    plt.legend(loc='best', fontsize = 9)
+    plt.legend(loc='best', fontsize = 15)
     plt.savefig(f"ARIMA {column}_train_test.png")
     plt.show()
 
@@ -249,12 +248,12 @@ def heatmap(aic_matrix, column):
 
 
 ## Plot the 30-day forecast and compare it to the actual values
-def plot_forecast_comparison(model, y_train, y_test, column, mean, steps=30):
+def plot_forecast_comparison(model, y_train, y_test, column, mean, steps=210):
     forecast = model.predict(n_periods=steps)
     forecast = pd.Series(forecast, index=y_test.index)
     
     plt.figure(figsize=(20, 10))
-    plt.plot(y_train[-100:], label='Observed (Training) (200 days)')
+    plt.plot(y_train[-400:], label='Observed (Training) (400 days)')
     plt.plot(y_test, label='Observed (Test)')
     plt.plot(forecast, label='Forecast')
     plt.axvline(x=y_train.index[-1],color='black', linestyle='--', label = 'Train/Test data cut-off')
@@ -319,7 +318,7 @@ def direction_counter(forecast, data_test, column):
 
 
     ## create loop to check if the forecast predicts the correct direction of the exchange rate when compared to the actual values
-    for i in range(len(df)):
+    for i in range((len(df)-1)):
         if df['forecast'][i] > df['forecast'][i-1] and df['actual'][i] > df['actual'][i-1]:
             counter += 1
             correct_direction += 1
@@ -384,7 +383,7 @@ def direction_counter(forecast, data_test, column):
     with open(f"ARIMA {column}_direction.tex", "w") as f:
         f.write(tabulate(table_concat, tablefmt="latex", headers = name))
 
-    return random_walk, df, table_concat
+    return 
 
 
 def rand(random_walk, forecast, data_test, column):
